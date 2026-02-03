@@ -872,7 +872,7 @@ ingress:
   enabled: true
   className: "alb"
   annotations: {
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-2:163200642413:certificate/a737e71b-9c38-4481-bf66-5a83f51bf7ec,
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-2:163200642413:certificate/17d3dc2e-bd32-47c7-a267-3407e2410b90,
     alb.ingress.kubernetes.io/healthcheck-interval-seconds: "300",
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80,"HTTPS": 443}]',
     alb.ingress.kubernetes.io/scheme: internal,
