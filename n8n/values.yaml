@@ -180,7 +180,7 @@ db:
   # -- Prefix to use for table names.
   tablePrefix: ""
   # -- Type of database to use. Valid values 'sqlite' | 'postgresdb'
-  type: sqlite
+  type: postgresdb
 
   logging:
     # -- Whether database logging is enabled.
@@ -405,7 +405,7 @@ main:
 # -- Worker node configurations
 worker:
   # -- Use `regular` to use main node as executer, or use `queue` to have worker nodes
-  mode: regular
+  mode: queue
 
   # -- number of concurrency for each worker
   concurrency: 10
@@ -419,7 +419,7 @@ worker:
   # -- If true, the number of workers will be automatically scaled based on default metrics. On default, it will scale based on CPU and memory. For more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
   autoscaling:
     # -- Whether autoscaling is enabled.
-    enabled: false
+    enabled: true
 
     # -- The minimum number of replicas.
     minReplicas: 2
@@ -581,7 +581,7 @@ worker:
 # -- Webhook node configurations
 webhook:
   # -- Use `regular` to use main node as webhook node, or use `queue` to have webhook nodes
-  mode: regular
+  mode: queue
 
   # -- Webhook url together with http or https schema
   url: ""
@@ -870,13 +870,13 @@ gracefulShutdownTimeout: 30
 
 # -- This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: n8n.local
+    - host: n8n.dev.azuga.com
       paths:
         - path: /
           pathType: Prefix
@@ -1024,11 +1024,11 @@ externalRedis:
   # -- Redis database for Bull queue.
   database: 0
   # -- External Redis server host
-  host: ""
+  host: "pentaho-redis-app-0.dev.azuga.com"
   # -- External Redis username
-  username: ""
+  username: "default"
   # -- External Redis password
-  password: ""
+  password: "azuga"
   # -- External Redis server port
   port: 6379
   # -- The name of an existing secret with Redis (must contain key `redis-password`) and Sentinel credentials.
@@ -1086,11 +1086,11 @@ postgresql:
 # -- External PostgreSQL parameters
 externalPostgresql:
   # -- External PostgreSQL server host
-  host: ""
+  host: "pentaho-postgres-app-0.dev.azuga.com"
   # -- External PostgreSQL username
-  username: "postgres"
+  username: "azugadba"
   # -- External PostgreSQL password
-  password: ""
+  password: "azuga"
   # -- External PostgreSQL server port
   port: 5432
   # -- The name of the external PostgreSQL database. For more information: https://docs.n8n.io/hosting/configuration/supported-databases-settings/#required-permissions
