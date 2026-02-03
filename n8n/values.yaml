@@ -584,7 +584,7 @@ webhook:
   mode: queue
 
   # -- Webhook url together with http or https schema
-  url: ""
+  url: "https://n8n.dev.azuga.com"
 
   # -- Static number of webhooks. If allNodes or autoscaling is enabled, this value will be ignored.
   count: 2
