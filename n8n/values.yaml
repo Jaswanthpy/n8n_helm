@@ -800,7 +800,7 @@ webhook:
 # -- Task runners mode. Please follow the documentation for more information: https://docs.n8n.io/hosting/configuration/task-runners/
 taskRunners:
   # -- Use `internal` to use internal task runner, or use `external` to have external sidecar task runner. For more information please follow the documentation: https://docs.n8n.io/hosting/configuration/task-runners/#task-runner-modes
-  mode: external
+  mode: internal
   # -- The timeout for the task in seconds
   taskTimeout: 60
   # -- The heartbeat interval for the task in seconds
@@ -818,9 +818,9 @@ taskRunners:
   # -- The configuration for the external task runner
   external:
     # -- The auth token for the main node
-    mainNodeAuthToken: "azuga"
+    mainNodeAuthToken: ""
     # -- The auth token for the worker node
-    workerNodeAuthToken: "azuga"
+    workerNodeAuthToken: ""
     # -- The auto shutdown timeout for the external task runner in seconds
     autoShutdownTimeout: 15
     # -- The port for the external task runner
