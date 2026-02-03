@@ -107,7 +107,7 @@ metadata:
     meta.helm.sh/release-namespace: default
 type: Opaque
 data:
-  N8N_ENCRYPTION_KEY: "ZmFhNTUzYTA2OTM3ZDI3ZDY0ZGYwZDJiOWZjMDc3Y2M="
+  N8N_ENCRYPTION_KEY: "ZmRlZDUzM2Y2ZjBjZDIxNzMyNTY3MTdkNGM4ZTVjZjk="
 ---
 # Source: n8n/templates/secret.yaml
 apiVersion: v1
@@ -469,6 +469,8 @@ spec:
               value: "30"
             - name: N8N_DISABLE_UI
               value: "true"
+            - name: WEBHOOK_URL
+              value: "https://n8n.dev.azuga.com"
             - name: DB_POSTGRESDB_USER
               value: azugadba
             - name: DB_POSTGRESDB_PASSWORD
@@ -615,6 +617,8 @@ spec:
               value: "30"
             - name: N8N_DISABLE_UI
               value: "true"
+            - name: WEBHOOK_URL
+              value: "https://n8n.dev.azuga.com"
             - name: DB_POSTGRESDB_USER
               value: azugadba
             - name: DB_POSTGRESDB_PASSWORD
@@ -922,6 +926,8 @@ spec:
                   name: n8n-redis
                   key: redis-password
                   optional: true
+            - name: WEBHOOK_URL
+              value: "https://n8n.dev.azuga.com"
             - name: N8N_EXTERNAL_STORAGE_S3_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -1013,5 +1019,75 @@ spec:
             backend:
               service:
                 name: n8n
+                port:
+                  number: 5678
+          - path: /webhook/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n-webhook
+                port:
+                  number: 5678
+          - path: /webhook-test/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n
+                port:
+                  number: 5678
+          - path: /form/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n-webhook
+                port:
+                  number: 5678
+          - path: /form-test/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n
+                port:
+                  number: 5678
+          - path: /mcp/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n-mcp-webhook
+                port:
+                  number: 5678
+          - path: /mcp-test/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n
+                port:
+                  number: 5678
+          - path: /rest/oauth2-credential/callback
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n
+                port:
+                  number: 5678
+          - path: /static/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n
+                port:
+                  number: 5678
+          - path: /webhook-waiting/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n-webhook
+                port:
+                  number: 5678
+          - path: /form-waiting/
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n-webhook
                 port:
                   number: 5678
