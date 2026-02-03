@@ -818,9 +818,9 @@ taskRunners:
   # -- The configuration for the external task runner
   external:
     # -- The auth token for the main node
-    mainNodeAuthToken: ""
+    mainNodeAuthToken: "azuga"
     # -- The auth token for the worker node
-    workerNodeAuthToken: ""
+    workerNodeAuthToken: "azuga"
     # -- The auto shutdown timeout for the external task runner in seconds
     autoShutdownTimeout: 15
     # -- The port for the external task runner
